@@ -1,0 +1,20 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-service
+  template:
+    metadata:
+      labels:
+        app: demo-service
+    spec:
+      containers:
+      - name: demo-service
+        image: gcr.io/maximal-copilot-388607/demo-service:v1
+        ports:
+        - containerPort: 8080
